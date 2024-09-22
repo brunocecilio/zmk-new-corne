@@ -16,13 +16,6 @@
 
 / {
     behaviors {
-        td0: td0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD0";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
-        };
-
         mmv {
             acceleration-exponent = <1>;      // 1
             time-to-max-speed-ms = <900>;    // 40
@@ -35,21 +28,22 @@
             delay-ms = <0>;                   // 10
         };
     };
-rgb_encoder: rgb_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            label = "RGB_ENCODER";
-            #sensor-binding-cells = <0>;
-            bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
-        };
 
-        scroll_encoder: scroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings =  <&msc SCRL_DOWN>,<&msc SCRL_UP>;
+    rgb_encoder: rgb_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        label = "RGB_ENCODER";
+        #sensor-binding-cells = <0>;
+        bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
+    };
 
-            tap-ms = <30>;
-        };
-    
+    scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+        tap-ms = <30>;
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -74,7 +68,6 @@ rgb_encoder: rgb_encoder {
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
-
         lower_layer {
             display-name = "SYMBOL";
 
@@ -95,7 +88,7 @@ rgb_encoder: rgb_encoder {
             sensor-bindings = <&scroll_encoder>;
         };
 
-        raise_layer {
+        upper_layer {
             display-name = "NUMBER";
 
             // -----------------------------------------------------------------------------------------
@@ -115,7 +108,7 @@ rgb_encoder: rgb_encoder {
             sensor-bindings = <&scroll_encoder>;
         };
 
-        layer_3 {
+        middle_layer {
             display-name = "Fn";
             bindings = <
 &bt BT_CLR       &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4       &kp F12  &kp F7  &kp F8  &kp F9  &kp PRINTSCREEN  &out OUT_USB
@@ -126,6 +119,15 @@ rgb_encoder: rgb_encoder {
 
             label = "FN";
             sensor-bindings = <&scroll_encoder>;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        ACTIVATE_MIDDLE {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
