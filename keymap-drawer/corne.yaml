@@ -40,6 +40,7 @@ layers:
   - .
   - {t: /, s: '?'}
   - '&mkp MB2'
+  - $$mdi:volume-off$$
   - $$mdi:apple-keyboard-option$$
   - lower
   - $$mdi:keyboard-space$$
@@ -87,6 +88,7 @@ layers:
   - {t: '=', s: +}
   - '|'
   - _
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
@@ -141,6 +143,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -182,6 +185,7 @@ layers:
   - F1
   - F2
   - F3
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
